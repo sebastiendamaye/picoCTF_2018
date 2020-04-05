@@ -1,12 +1,15 @@
-# TITLE_GOES_HERE
+# Reversing Warmup 2
 ## Question
->Question goes here
+>Can you decode the following string `dGg0dF93NHNfczFtcEwz` from base64 format to ASCII? 
 
 ## Hint
->Hint goes here
+>Submit your answer in our competition's flag format. For example, if you answer was 'hello', you would submit 'picoCTF{hello}' as the flag.
 
 # Solution
-Solution goes here
+~~~~
+$ echo picoCTF{$(echo -n "dGg0dF93NHNfczFtcEwz" | base64 -d)}
+picoCTF{th4t_w4s_s1mpL3}
+~~~~
 
 # Flag
-`picoCTF{FLAG_GOES_HERE}`
+`picoCTF{th4t_w4s_s1mpL3}`
