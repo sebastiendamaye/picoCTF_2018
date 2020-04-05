@@ -1,5 +1,5 @@
 # Forensics Warmup 2
-## Questioni
+## Question
 >Hmm for some reason I can't open this [PNG](files/flag.png)? Any ideas? 
 
 ## Hint
