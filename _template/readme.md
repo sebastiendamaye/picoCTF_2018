@@ -1,4 +1,4 @@
-# Question & Hint
+# TITLE_GOES_HERE
 ## Question
 >Question goes here
 
@@ -6,8 +6,7 @@
 >Hint goes here
 
 # Solution
-Solution here
+Solution goes here
 
 # Flag
-`Flag`
-
+`picoCTF{FLAG_GOES_HERE}`
