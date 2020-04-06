@@ -1,12 +1,16 @@
-# TITLE_GOES_HERE
+# environ
 ## Question
->Question goes here
+> Sometimes you have to configure environment variables before executing a program. Can you find the flag we've hidden in an environment variable on the shell server?
 
 ## Hint
->Hint goes here
+>unix [env](https://www.tutorialspoint.com/unix/unix-environment.htm)
 
 # Solution
-Solution goes here
+Connect to the server via SSH and issue the following command to list a filtered list of environment variables:
+~~~~
+$ printenv | grep pico
+SECRET_FLAG=picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}
+~~~~
 
 # Flag
-`picoCTF{FLAG_GOES_HERE}`
+`picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}`
