@@ -90,24 +90,8 @@ The `main` function calls 4 functions, one of which being `set_timer`. This func
 
 Let's run the program in `gdb` and we will patch the program with `NOP` instructions (`0x90`) to erase the call to the `set_timer` function:
 ~~~~
-$ gdb be-quick-or-be-dead-1
-GNU gdb (Debian 9.1-2) 9.1
-Copyright (C) 2020 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Type "show copying" and "show warranty" for details.
-This GDB was configured as "x86_64-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-    <http://www.gnu.org/software/gdb/documentation/>.
-
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from be-quick-or-be-dead-1...
-(No debugging symbols found in be-quick-or-be-dead-1)
+$ gdb ./be-quick-or-be-dead-1 
+(gdb) set disassembly-flavor intel
 (gdb) b main
 Breakpoint 1 at 0x40082b
 (gdb) r
@@ -116,22 +100,22 @@ Starting program: /data/documents/challenges/picoCTF_2018/reversing/200-be-quick
 Breakpoint 1, 0x000000000040082b in main ()
 (gdb) disassemble 
 Dump of assembler code for function main:
-   0x0000000000400827 <+0>:	push   %rbp
-   0x0000000000400828 <+1>:	mov    %rsp,%rbp
-=> 0x000000000040082b <+4>:	sub    $0x10,%rsp
-   0x000000000040082f <+8>:	mov    %edi,-0x4(%rbp)
-   0x0000000000400832 <+11>:	mov    %rsi,-0x10(%rbp)
-   0x0000000000400836 <+15>:	mov    $0x0,%eax
-   0x000000000040083b <+20>:	callq  0x4007e9 <header>
-   0x0000000000400840 <+25>:	mov    $0x0,%eax
-   0x0000000000400845 <+30>:	callq  0x400742 <set_timer>
-   0x000000000040084a <+35>:	mov    $0x0,%eax
-   0x000000000040084f <+40>:	callq  0x400796 <get_key>
-   0x0000000000400854 <+45>:	mov    $0x0,%eax
-   0x0000000000400859 <+50>:	callq  0x4007c1 <print_flag>
-   0x000000000040085e <+55>:	mov    $0x0,%eax
-   0x0000000000400863 <+60>:	leaveq 
-   0x0000000000400864 <+61>:	retq   
+   0x0000000000400827 <+0>:	push   rbp
+   0x0000000000400828 <+1>:	mov    rbp,rsp
+=> 0x000000000040082b <+4>:	sub    rsp,0x10
+   0x000000000040082f <+8>:	mov    DWORD PTR [rbp-0x4],edi
+   0x0000000000400832 <+11>:	mov    QWORD PTR [rbp-0x10],rsi
+   0x0000000000400836 <+15>:	mov    eax,0x0
+   0x000000000040083b <+20>:	call   0x4007e9 <header>
+   0x0000000000400840 <+25>:	mov    eax,0x0
+   0x0000000000400845 <+30>:	call   0x400742 <set_timer>
+   0x000000000040084a <+35>:	mov    eax,0x0
+   0x000000000040084f <+40>:	call   0x400796 <get_key>
+   0x0000000000400854 <+45>:	mov    eax,0x0
+   0x0000000000400859 <+50>:	call   0x4007c1 <print_flag>
+   0x000000000040085e <+55>:	mov    eax,0x0
+   0x0000000000400863 <+60>:	leave  
+   0x0000000000400864 <+61>:	ret    
 End of assembler dump.
 (gdb) set *(char*)0x400845 = 0x90
 (gdb) set *(char*)0x400846 = 0x90
@@ -140,26 +124,26 @@ End of assembler dump.
 (gdb) set *(char*)0x400849 = 0x90
 (gdb) disassemble 
 Dump of assembler code for function main:
-   0x0000000000400827 <+0>:	push   %rbp
-   0x0000000000400828 <+1>:	mov    %rsp,%rbp
-=> 0x000000000040082b <+4>:	sub    $0x10,%rsp
-   0x000000000040082f <+8>:	mov    %edi,-0x4(%rbp)
-   0x0000000000400832 <+11>:	mov    %rsi,-0x10(%rbp)
-   0x0000000000400836 <+15>:	mov    $0x0,%eax
-   0x000000000040083b <+20>:	callq  0x4007e9 <header>
-   0x0000000000400840 <+25>:	mov    $0x0,%eax
+   0x0000000000400827 <+0>:	push   rbp
+   0x0000000000400828 <+1>:	mov    rbp,rsp
+=> 0x000000000040082b <+4>:	sub    rsp,0x10
+   0x000000000040082f <+8>:	mov    DWORD PTR [rbp-0x4],edi
+   0x0000000000400832 <+11>:	mov    QWORD PTR [rbp-0x10],rsi
+   0x0000000000400836 <+15>:	mov    eax,0x0
+   0x000000000040083b <+20>:	call   0x4007e9 <header>
+   0x0000000000400840 <+25>:	mov    eax,0x0
    0x0000000000400845 <+30>:	nop
    0x0000000000400846 <+31>:	nop
    0x0000000000400847 <+32>:	nop
    0x0000000000400848 <+33>:	nop
    0x0000000000400849 <+34>:	nop
-   0x000000000040084a <+35>:	mov    $0x0,%eax
-   0x000000000040084f <+40>:	callq  0x400796 <get_key>
-   0x0000000000400854 <+45>:	mov    $0x0,%eax
-   0x0000000000400859 <+50>:	callq  0x4007c1 <print_flag>
-   0x000000000040085e <+55>:	mov    $0x0,%eax
-   0x0000000000400863 <+60>:	leaveq 
-   0x0000000000400864 <+61>:	retq   
+   0x000000000040084a <+35>:	mov    eax,0x0
+   0x000000000040084f <+40>:	call   0x400796 <get_key>
+   0x0000000000400854 <+45>:	mov    eax,0x0
+   0x0000000000400859 <+50>:	call   0x4007c1 <print_flag>
+   0x000000000040085e <+55>:	mov    eax,0x0
+   0x0000000000400863 <+60>:	leave  
+   0x0000000000400864 <+61>:	ret    
 End of assembler dump.
 (gdb) c
 Continuing.
@@ -170,7 +154,7 @@ Calculating key...
 Done calculating key
 Printing flag:
 picoCTF{why_bother_doing_unnecessary_computation_29ff5e84}
-[Inferior 1 (process 11180) exited normally]
+[Inferior 1 (process 11770) exited normally]
 (gdb) q
 ~~~~
 
