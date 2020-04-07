@@ -52,7 +52,7 @@ OK, let's open the executable in your favorite disassembler (IDA Pro, Hopper, ..
 .text:0000000000400864 main            endp
 ```
 
-The main function calls 4 functions and the set_time function exits the program after 1 second, which does not leave enough time for the machine to compute the key:
+The `main` function calls 4 functions, one of which being `set_timer`. This function exits the program after 1 second, which does not leave enough time for the machine to compute the key:
 ```asm
 .text:0000000000400742                 public set_timer
 .text:0000000000400742 set_timer       proc near               ; CODE XREF: main+1E↓p
