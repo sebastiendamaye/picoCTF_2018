@@ -8,10 +8,10 @@
 # Solution
 Let's run the program on the server:
 ~~~~
-$ **./main** 
+$ ./main 
 You have now entered the Duck Web, and you're in for a honkin' good time.
 Can you figure out my trick?
-**oops**
+oops
 That's all folks.
 ~~~~
 
