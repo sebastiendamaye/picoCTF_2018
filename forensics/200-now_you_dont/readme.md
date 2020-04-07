@@ -1,12 +1,16 @@
-# TITLE_GOES_HERE
+# now you don't
 ## Question
->Question goes here
+> We heard that there is something hidden in this [picture](files/nowYouDont.png). Can you find it?
 
-## Hint
->Hint goes here
+## Hints
+>There is an old saying: if you want to hide the treasure, put it in plain sight. Then no one will see it.
+
+>Is it really all one shade of red?
 
 # Solution
-Solution goes here
+Guided by the hints, we decide to use [StegSolve](https://www.aldeid.com/wiki/Stegsolve):
+
+!["flag"](files/flag.png "flag")
 
 # Flag
-`picoCTF{FLAG_GOES_HERE}`
+`picoCTF{n0w_y0u_533_m3}`
