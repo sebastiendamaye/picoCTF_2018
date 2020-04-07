@@ -22,7 +22,7 @@ Calculating key...
 You need a faster machine. Bye bye.
 ~~~~
 
-OK, let's open the executable in your favorite disassembler (IDA Pro, Hopper, ...) to see chat the `main` function looks like:
+OK, let's open the executable in your favorite disassembler (IDA Pro, Hopper, ...) to see what the `main` function looks like:
 
 ```asm
 
