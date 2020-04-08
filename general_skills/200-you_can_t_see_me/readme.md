@@ -8,7 +8,7 @@
 >What's in the manual page of ls?
 
 # Solution
-Connect to the server and go to the directory in the question. You notice the presence of a hidden file
+Connect to the server and go to the directory in the question and list the files with `ls`:
 ~~~~
 $ cd /problems/you-can-t-see-me_4_8bd1412e56df49a3c3757ebeb7ead77f
 $ ls
