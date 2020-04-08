@@ -14,7 +14,7 @@
 >Once you've fixed the corruption, you can use /sbin/[debugfs](debugfs) to pull the flag file out.
 
 # Solution
-My first attempt was to run the file command, but not really helpful.
+My first attempt was to run the `file` command, but not really helpful.
 ~~~~
 $ file ext-super-magic.img 
 ext-super-magic.img: data
