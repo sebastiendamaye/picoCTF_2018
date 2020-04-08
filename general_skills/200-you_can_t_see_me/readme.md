@@ -23,7 +23,7 @@ drwxr-xr-x   2 root       root        4096 Mar 25  2019 .
 drwxr-x--x 556 root       root       53248 Mar 25  2019 ..
 ~~~~
 
-It seems that there is a hidden file. Hidden file names are starting with a dot (`.`). However, we don't see it's name (probably because the name is just with spaces). Let's just the `-b` parameter to escape the special characters:
+It seems that there is a hidden file. Hidden file names are starting with a dot (`.`). However, we don't see it's name (probably because the name is just with spaces). Let's add the `-b` parameter to escape the special characters:
 ~~~~
 $ ls -lab
 total 60
@@ -32,7 +32,7 @@ drwxr-xr-x   2 root       root        4096 Mar 25  2019 .
 drwxr-x--x 556 root       root       53248 Mar 25  2019 ..
 ~~~~
 
-We See that the escaped file name has 2 blackslashes (`\`) to escape 2 spaces. The file name is `[DOT][SPACE][SPACE]`. Let's use `cat` to show the content of the file.
+We See that the escaped file name has 2 blackslashes (`\`), each one being used to escape a space. The file name is `[DOT][SPACE][SPACE]`. Let's use `cat` to show the content of the file.
 ~~~~
 $ cat ".  "
 picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_22f627d9}
