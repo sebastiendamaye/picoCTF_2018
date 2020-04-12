@@ -134,8 +134,8 @@ The function `get_key` calls the function `calculate_key` at `0x4007E1` which co
 
 Now that we know that, we'll skip both the calls to `set_timer` and `get_key` and we will manually set `key` before calling `print_flag`.
 
-```
-.text:000000000040085F main            proc near               ; DATA XREF: _start+1D↑o
+```asm
+.text:000000000040085F main            proc near               ; we'll break at main
 .text:000000000040085F
 .text:000000000040085F var_10          = qword ptr -10h
 .text:000000000040085F var_4           = dword ptr -4
@@ -148,11 +148,11 @@ Now that we know that, we'll skip both the calls to `set_timer` and `get_key` an
 .text:000000000040086E                 mov     eax, 0
 .text:0000000000400873                 call    header
 .text:0000000000400878                 mov     eax, 0
-.text:000000000040087D                 call    set_timer
+.text:000000000040087D                 call    set_timer    ; we'll NOP that call
 .text:0000000000400882                 mov     eax, 0
-.text:0000000000400887                 call    get_key
+.text:0000000000400887                 call    get_key      ; we'll NOP that call
 .text:000000000040088C                 mov     eax, 0
-.text:0000000000400891                 call    print_flag
+.text:0000000000400891                 call    print_flag   ; we'll break here and set the key
 .text:0000000000400896                 mov     eax, 0
 .text:000000000040089B                 leave
 .text:000000000040089C                 retn
@@ -175,7 +175,7 @@ We'll NOP the call to `set_timer` to skipp the call:
 (gdb) set *(char*)0x400881 = 0x90
 ~~~~
 
-We'll also the call to `calculate_key` to skip the call:
+We'll also NOP the call to `calculate_key` to skip the call:
 ~~~~
 (gdb) set *(char*)0x400887 = 0x90
 (gdb) set *(char*)0x400888 = 0x90
